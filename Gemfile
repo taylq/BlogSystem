@@ -15,6 +15,9 @@ gem "jbuilder", "~> 2.5"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bcrypt", "3.1.12"
 gem "jquery-rails"
+gem "faker"
+gem "will_paginate"
+gem "will_paginate-bootstrap"
 
 group :development, :test do
   gem "pry", platforms: [:mri, :mingw, :x64_mingw]
