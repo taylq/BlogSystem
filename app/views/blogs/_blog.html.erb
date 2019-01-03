@@ -1,4 +1,6 @@
 <li id="blog-<%= blog.id %>">
+  <%= link_to image_tag(blog.user.gravatar_url), blog.user %>
+  <span class="name"><%= blog.user.name %></span>
   <span class="title"><%= blog.title %></span>
   <span class="content"><%= blog.content %></span>
   <span class="timestamp">
