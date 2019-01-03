@@ -3,9 +3,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build comment_params
-    @blogs = current_user.feed.paginate page: params[:page]
+    @blogs = current_user.feed.paginate page: params[:page], per_page: 5
     if @comment.save
-      flash[:success] = "comment created!"
       respond_to do |format|
         format.html {redirect_to @comment}
         format.js
@@ -18,7 +17,6 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    flash[:success] = "comment deleted"
     respond_to do |format|
       format.html {redirect_to request.referrer || root_url}
       format.js

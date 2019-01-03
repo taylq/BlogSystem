@@ -1,10 +1,10 @@
-<% provide(:title, @title) %>
+<% provide :title, @title %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <%= image_tag @user.gravatar_url %>
       <h1><%= @user.name %></h1>
-      <span><%= link_to "view my profile", @user %></span>
+      <span><%= link_to t("shared.user_info.view_profile"), @user %></span>
       <span><b>Blogs:</b> <%= @user.blogs.count %></span>
     </section>
     <section class="stats">
@@ -21,10 +21,17 @@
   <div class="col-md-8">
     <h3><%= @title %></h3>
     <% if @users.any? %>
-      <ul class="users follow">
-        <%= render @users %>
-      </ul>
-      <%= will_paginate %>
+      <div class="custom_a">
+        <div class="flickr_pagination">
+          <ul class="users follow">
+            <%= render @users %>
+          </ul>
+          <div class="page_info">
+            <%= page_entries_info @users %>
+          </div>
+          <%= will_paginate @users, container: false %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

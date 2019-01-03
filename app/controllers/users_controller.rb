@@ -4,11 +4,11 @@ class UsersController < ApplicationController
     
   def show
     @user = User.find_by id: params[:id]
-    @blogs = @user.blogs.paginate page: params[:page]
-    @comment = current_user.comments.build
+    @blogs = @user.blogs.paginate page: params[:page], per_page: 5
+    @comment = current_user.comments.build if logged_in?
     if current_user == @user
       @blog  = current_user.blogs.build
-      @feed_items = @user.feed.paginate page: params[:page]
+      @feed_items = @user.feed.paginate page: params[:page], per_page: 5
     end
   end
 
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = t ".welcome"
       redirect_to @user
     else
       render "new"
@@ -28,16 +28,16 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "Following"
+    @title = t ".following"
     @user  = User.find_by id: params[:id]
-    @users = @user.following.paginate page: params[:page]
+    @users = @user.following.paginate page: params[:page], per_page: 5
     render "show_follow"
   end
 
   def followers
-    @title = "Followers"
+    @title = t ".followers"
     @user  = User.find_by id: params[:id]
-    @users = @user.followers.paginate page: params[:page]
+    @users = @user.followers.paginate page: params[:page], per_page: 5
     render "show_follow"
   end
 

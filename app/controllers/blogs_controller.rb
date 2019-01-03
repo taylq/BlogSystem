@@ -4,8 +4,8 @@ class BlogsController < ApplicationController
   def create
     @blog = current_user.blogs.build blog_params
     if @blog.save
-      flash[:success] = "blog created!"
-      redirect_to root_url
+      flash[:success] = t ".blog_created"
+      redirect_to request.referrer || root_url
     else
       @feed_items = []
       render "static_pages/home"
@@ -14,7 +14,7 @@ class BlogsController < ApplicationController
 
   def destroy
     @blog.destroy
-    flash[:success] = "blog deleted"
+    flash[:danger] = t ".blog_deleted"
     redirect_to request.referrer || root_url
   end
 
