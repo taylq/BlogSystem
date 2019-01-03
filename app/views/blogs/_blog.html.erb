@@ -11,3 +11,12 @@
     <% end %>
   </span>
 </li>
+  <% if logged_in? %>
+    <div id="load_comment-<%= blog.id %>">
+      <%= render "comments/comment", blog: blog %>
+    </div>
+    <div id="comment_form">
+      <%= render "comments/form", blog: blog, user: blog.user %>
+    </div>
+
+  <% end %>

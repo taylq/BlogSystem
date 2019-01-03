@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by id: params[:id]
     @blogs = @user.blogs.paginate page: params[:page]
+    @comment = current_user.comments.build
     if current_user == @user
       @blog  = current_user.blogs.build
       @feed_items = @user.feed.paginate page: params[:page]
