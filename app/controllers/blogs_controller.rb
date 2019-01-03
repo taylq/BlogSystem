@@ -1,5 +1,4 @@
 class BlogsController < ApplicationController
-  before_action :logged_in_user, only: %i[create destroy]
   before_action :correct_user, only: :destroy
 
   def create
