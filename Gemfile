@@ -18,6 +18,7 @@ gem "jquery-rails"
 gem "faker"
 gem "will_paginate"
 gem "will_paginate-bootstrap"
+gem "rails-i18n"
 
 group :development, :test do
   gem "pry", platforms: [:mri, :mingw, :x64_mingw]

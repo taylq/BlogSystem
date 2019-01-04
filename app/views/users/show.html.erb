@@ -1,22 +1,32 @@
 <% provide :title, @user.name %>
 <% if current_user == @user %>
   <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
+    <aside class="col-md-12">
+      <section class="user_info col-sm-4">
         <%= render "shared/user_info" %>
       </section>
-      <section class="blog_form">
+      <section class="blog_form col-sm-8">
         <%= render "shared/blog_form" %>
       </section>
     </aside>
-    <div class="col-md-8">
-      <h3>Blog Feed</h3>
-      <%= render "shared/feed" %>
+    <div class="col-md-8 col-sm-offset-2 load_comment1">
+      <h3><%= t "static_pages.home.news_feed" %></h3>
+      <div class="custom_a">
+        <div class="flickr_pagination">
+          <ol class="blogs">
+            <%= render @blogs %>
+          </ol>
+          <div class="page_info">
+            <%= page_entries_info @blogs %>
+          </div>
+          <%= will_paginate @blogs, container: false %>
+        </div>
+      </div>
     </div>
   </div>
 <% else %>
   <div class="row">
-    <aside class="col-md-4">
+    <aside class="col-md-3">
       <section class="user_info">
         <h1>
           <%= image_tag @user.gravatar_url, alt: @user.name %>
@@ -26,16 +36,22 @@
       <section class="stats">
         <%= render "shared/stats" %>
       </section>
-  </aside>
-    </aside>
-    <div class="col-md-8">
       <%= render "follow_form" if logged_in? %>
+    </aside>
+    <div class="col-md-9" id="ajax_blog">
       <% if @user.blogs.any? %>
         <h3>blogs (<%= @user.blogs.count %>)</h3>
-        <ol class="blogs">
-          <%= render @blogs %>
-        </ol>
-        <%= will_paginate @blogs %>
+        <div class="custom_a">
+          <div class="flickr_pagination">
+            <ol class="blogs">
+              <%= render @blogs %>
+            </ol>
+            <div class="page_info">
+              <%= page_entries_info @blogs %>
+            </div>
+            <%= will_paginate @blogs, container: false %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

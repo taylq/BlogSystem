@@ -1,0 +1,81 @@
+vi:
+  layouts:
+    application:
+      title: "Blog System"
+    header:
+      language: "Ngôn ngữ"
+      home: "Trang chủ"
+      account: "Tài khoản"
+      profile: "Hồ sơ"
+      settings: "Cài đặt"
+      log_out: "Đăng xuất"
+      log_in: "Đăng nhập"
+      english: "Tiếng Anh"
+      vietnamese: "Tiếng Việt"
+  blogs:
+    create:
+      blog_created: "Tạo blog thành công!"
+    destroy:
+      blog_deleted: "Xóa blog thành công!"
+    blog:
+      posted: "Đăng"
+      ago: "trước."
+      you_sure: "Bạn chắc chắn muốn xóa?"
+      delete: "Xóa"
+  comments:
+    comment:
+      comment: "Bình luận"
+  users:
+    following:
+      following: "Đang theo dõi"
+    followers:
+      followers: "Người theo dõi"
+    create:
+      welcome: "Chào mừng bạn đến với Blog System!"
+    follow:
+      follow: "Theo dõi"
+    unfollow:
+      unfollow: "Bỏ theo dõi"
+    new:
+      name: "Tên"
+      password_confirmation: "Nhập lại mật khẩu"
+      sign_up: "Đăng ký"
+  sessions:
+    create:
+      invalid_email: "Email hoặc mật khẩu không hợp lệ!"
+    new:
+      email: "Email"
+      password: "Mật khẩu"
+      new_user?: "Bạn chưa có tài khoản?"
+      sign_up_now: "Đăng ký ngay!"
+  shared:
+    blog_form:
+      title: "Bạn đang nghĩ gì?"
+      content: "Nội dung"
+      post: "Đăng"
+    error_messages:
+      form_err: "Có"
+    user_info:
+      view_profile: "Xem hồ sơ của tôi"
+  static_pages:
+    home:
+      news_feed: "Bảng tin"
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: "1 giờ"
+        other: "%{count} giờ"
+      less_than_x_minutes:
+        zero: "vừa xong" 
+        one: "1 phút"
+        other: "%{count} phút"
+      x_minutes:
+        one: "1 phút"
+        other: "%{count} phút"
+  will_paginate:
+    previous_label: "Trang trước"
+    page_gap: "..."
+    next_label: "Trang sau"
+    page_entries_info:
+      multi_page_html: "---"
+      single_page_html: "---" 

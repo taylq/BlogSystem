@@ -1,15 +1,20 @@
-<%= form_for @comment, html: {id: "new_message"}, remote: true do |f| %>
-  <%= render "shared/error_messages", object: f.object %>
-  <div class="field col-sm-10">
-    <%= f.text_field :content, placeholder: "Comment", class: "message_content" %>
-    <%= f.hidden_field :user_id, value: user.id %>
-    <%= f.hidden_field :blog_id, value: blog.id %>
+  <div class="row">
+    <div class="col-sm-10 pull-right">
+      <%= form_for @comment, html: {id: "new_message"}, remote: true do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+        <div class="field col-sm-10">
+          <%= f.text_field :content, placeholder: t("comments.comment.comment"),
+            class: "message_content" %>
+          <%= f.hidden_field :user_id, value: user.id %>
+          <%= f.hidden_field :blog_id, value: blog.id %>
+        </div>
+        <div class="field col-sm-2">
+          <%= f.submit t "comments.comment.comment" %>
+        </div>
+        </br>
+      <% end %>
+    </div>
   </div>
-  <div class="field col-sm-2">
-    <%= f.submit "Comment" %>
-  </div>
-  </br>
-<% end %>
 <script>
   $("#new_message").bind("ajax:complete", function(event,xhr,status){
     $('.message_content').val('');

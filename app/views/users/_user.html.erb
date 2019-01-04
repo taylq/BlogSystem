@@ -1,8 +1,15 @@
-<%= user.name %>
-<%= link_to user_path user do %>
-  <%= image_tag user.gravatar_url,
-    class: "img-responsive img-circle", alt: user.name %>
-  <% end %> | 
-  <%= link_to t("users.index.delete"), user, method: :delete,
-    data: {confirm: t(".confirm")}, class: "btn btn-danger" %>
-</br>
+<div class="row">
+  <div class="col-sm-8 load_comment1">
+    <%= link_to user do %>
+      <div class="col-sm-2"> 
+        <%= image_tag user.gravatar_url, class: "img-responsive img-circle" %>
+      </div>
+      <div class="col-sm-2"> 
+        <%= user.name %>
+        </div>
+    <% end %>
+      <%= link_to t("blogs.blog.delete"), user, method: :delete,
+        data: {confirm: t("blogs.blog.you_sure")}, class: "btn btn-danger pull-right" %>
+  </div>
+  </br>
+</div>
